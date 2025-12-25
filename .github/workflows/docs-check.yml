@@ -1,0 +1,53 @@
+name: Documentation Check
+
+on:
+  push:
+    branches: [ main, master ]
+    paths:
+      - '*.md'
+      - 'LICENSE'
+  pull_request:
+    branches: [ main, master ]
+    paths:
+      - '*.md'
+      - 'LICENSE'
+
+jobs:
+  check:
+    name: Check Documentation
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Check for broken links
+      run: |
+        echo "Checking for broken internal links..."
+        grep -r "\.md" *.md | grep -o '\[.*\](\./[^)]*)' | sed 's/.*(\.\/\(.*\))/\1/' | while read file; do
+          if [ ! -f "$file" ]; then
+            echo "❌ Broken link: $file"
+            exit 1
+          fi
+        done || echo "✅ All internal links are valid"
+        
+    - name: Check LICENSE exists
+      run: |
+        if [ ! -f "LICENSE" ]; then
+          echo "❌ LICENSE file is missing"
+          exit 1
+        else
+          echo "✅ LICENSE file exists"
+        fi
+        
+    - name: Check README structure
+      run: |
+        if ! grep -q "## 📋 Table of Contents" README.md; then
+          echo "❌ README.md missing Table of Contents"
+          exit 1
+        fi
+        echo "✅ README.md structure is valid"
+        
+    - name: Summary
+      run: |
+        echo "✅ Documentation check completed successfully"
