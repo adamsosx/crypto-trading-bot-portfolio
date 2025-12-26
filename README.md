@@ -105,6 +105,7 @@ sequenceDiagram
     participant Filter as User Filters
     participant Notif as Notification Service
     participant TG as Telegram API
+    participant PG as PostgreSQL
     
     WS->>Queue: Token Event
     Queue->>Processor: Dequeue Token
@@ -116,6 +117,7 @@ sequenceDiagram
             Processor->>Redis: Mark as accepted (TTL: 14 days)
             Processor->>Notif: Send notification
             Notif->>TG: Deliver to user
+            Notif->>PG: Log notification (async, non-blocking)
         else Filters Fail
             Processor->>Redis: Mark as rejected (TTL: 1 hour)
         end
@@ -126,6 +128,7 @@ sequenceDiagram
             alt New Channel Passes
                 Processor->>Redis: Upgrade to accepted
                 Processor->>Notif: Send notification
+                Notif->>PG: Log notification (async, non-blocking)
             end
         end
     end

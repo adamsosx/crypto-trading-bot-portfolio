@@ -177,6 +177,7 @@ graph TD
     
     I -->|Yes| J[Mark Accepted<br/>TTL: 14 days]
     J --> K[Send Notification]
+    K --> PG1[Log to PostgreSQL<br/>async, non-blocking]
     
     I -->|No| L[Mark Rejected<br/>TTL: 1 hour]
     L --> M[Store Channels Checked]
@@ -429,8 +430,8 @@ class TelegramRateLimiter:
 
 ### Current Capacity
 
-- **Users:** 100+ concurrent users
-- **Tokens:** 25,000+ tokens tracked
+- **Users:** 400+ concurrent users
+- **Tokens:** 25,000+ tokens/day
 - **Tracked Calls:** 2.5M+ multiplier entries
 - **Throughput:** 1000+ token events/minute
 

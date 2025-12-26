@@ -543,7 +543,7 @@ These optimizations result in:
 - **5000x faster** multiplier tracking (0.5s → 0.1ms)
 - **99.9% uptime** (automatic recovery)
 - **Zero API bans** (rate limiting)
-- **Scalable to 100+ users** (25K+ tokens each)
+- **Scalable to 400+ users** (25K+ tokens/day)
 - **Dual-write architecture** (Redis + PostgreSQL for analytics)
 
 ---
