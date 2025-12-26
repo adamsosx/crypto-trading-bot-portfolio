@@ -26,7 +26,7 @@
 
 ## <a id="overview"></a>🎯 Overview
 
-A production-grade Telegram bot that monitors cryptocurrency token signals in real-time, filters them based on user-defined criteria, and delivers personalized notifications. The system handles payments, subscriptions, admin management, and complex caching strategies to serve 100+ concurrent users processing 25,000+ tokens.
+A production-grade Telegram bot that monitors cryptocurrency token signals in real-time, filters them based on user-defined criteria, and delivers personalized notifications. The system handles payments, subscriptions, admin management, and complex caching strategies to serve 400+ concurrent users processing 25,000+ tokens/day.
 
 **Project Type:** Commercial Fintech Application  
 **Role:** Full-Stack Developer / System Architect  
@@ -393,11 +393,12 @@ user_ids = self.tracked_tokens_by_token.get(token_address, [])
 ## <a id="performance-metrics"></a>📊 Performance Metrics
 
 ### Scalability
-- **Users:** 100+ concurrent users
-- **Tokens:** 25,000+ tokens tracked
+- **Users:** 400+ concurrent users
+- **Tokens:** 25,000+ tokens/day
 - **Tracked Calls:** 2.5M+ multiplier tracking entries
 - **Throughput:** 1000+ token events/minute
 - **Cache Hit Rate:** 95%+
+- **Availability:** 24/7 operation (Production Active)
 
 ### Response Times
 - **Cache Lookup:** 0.1ms
@@ -412,7 +413,7 @@ user_ids = self.tracked_tokens_by_token.get(token_address, [])
 - **Network:** Optimized with connection pooling
 
 ### Reliability
-- **Uptime:** 99.9%+
+- **Uptime:** 99.9%+ (24/7 operation)
 - **Redis Reconnection:** Automatic (< 10s)
 - **WebSocket Reconnection:** Automatic (< 10s)
 - **Error Recovery:** Graceful degradation
