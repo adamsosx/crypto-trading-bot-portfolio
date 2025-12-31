@@ -610,6 +610,11 @@ This documentation is licensed under [Creative Commons Attribution-NonCommercial
 For inquiries about this project or collaboration opportunities, please reach out via:
 - GitHub: [(https://github.com/paradoxlabdev)]
 
+---
+
+## Author
+
+**paradoxlab.dev**
 
 ---
 
