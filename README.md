@@ -531,7 +531,7 @@ This project was a significant learning experience. Here are key insights and re
 
 ### Admin Panel
 
-![Admin Dashboard](./images/admin-dashboard.png)
+![Admin Dashboard](./images/admin-dashboard2.png)
 *Admin panel with user management, statistics, and system controls*
 
 ![Server Status](./images/admin-server-status.png)
